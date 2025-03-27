@@ -1,0 +1,51 @@
+services:
+  mongo1:
+    image: mongo:4.2
+    hostname: "mongo1"
+    container_name: mongodb1
+    ports:
+      - "27018:27017"
+
+  mongo2:
+    image: mongo:4.2
+    hostname: "mongo2"
+    container_name: mongodb2
+    ports:
+      - "27019:27017"
+
+  mongo3:
+    image: mongo:4.2
+    hostname: "mongo3"
+    container_name: mongodb3
+    ports:
+      - "27020:27017"            
+
+  mongo4:
+    image: mongo:4.2
+    hostname: "mongo4"
+    container_name: mongodb4
+    ports:
+      - "27021:27017"             
+
+  mongo5:
+    image: mongo:4.2
+    hostname: "mongo5"
+    container_name: mongodb5
+    ports:
+      - "27022:27017"    
+
+  backend1:
+    hostname: "backend"
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    image: vitoralbara/vitor1:v1
+    container_name: backend1
+    ports: 
+     - "8001:8000"
+    volumes:
+      - ./:/app/:z
+
+networks: 
+  default:
+    name: bdaia-net
